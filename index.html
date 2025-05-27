@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Link WhatsApp - Afroworld</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Gerador de Link para WhatsApp</h1>
+
+    <label for="numero">Número com DDD:</label>
+    <input type="text" id="numero" placeholder="Ex: 21999999999">
+
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" rows="3" placeholder="Digite sua mensagem..."></textarea>
+
+    <button onclick="gerarLink()">Gerar Link</button>
+
+    <div id="resultado" class="resultado" style="display: none;">
+      <p><strong>Seu link:</strong></p>
+      <input type="text" id="linkGerado" readonly>
+      <div class="botoes">
+        <button onclick="copiarLink()">Copiar</button>
+        <a id="abrirLink" target="_blank"><button>Abrir no WhatsApp</button></a>
+        <button onclick="limpar()">Limpar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
