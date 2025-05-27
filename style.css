@@ -145,15 +145,3 @@ button:hover {
     align-items: center;
   }
 }
-
-.language-selector {
-    margin-bottom: 10px;
-}
-.language-selector select {
-    width: 100%;
-    padding: 6px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background-color: white;
-    font-weight: bold;
-}

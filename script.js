@@ -52,65 +52,8 @@ function preencherTemplate(texto) {
   gerarLink();
 }
 
-const traducoes = {
-  pt: {
-    gerar: "Gerar Link",
-    copiar: "Copiar",
-    abrir: "Abrir no WhatsApp",
-    limpar: "Limpar",
-    placeholderMensagem: "Digite sua mensagem...",
-    placeholderNumero: "Ex: 21999999999",
-    resultado: "Seu link:",
-    titulo: "Gerador de Link para WhatsApp",
-    templates: {
-      "Boas-vindas": "👋 Olá! Obrigado por entrar em contato. Como posso ajudar você hoje?",
-      "Promoção": "🔥 OFERTA ESPECIAL!\nAproveite nossa promoção!\nUse o código PROMO10 e ganhe 10% OFF"
+document.getElementById('encurtar').addEventListener('click', function() {
+    if (this.checked) {
+        window.open('https://pl26767052.profitableratecpm.com/c5/b4/54/c5b454f940d4cb5622dea30319002188', '_blank');
     }
-  },
-  en: {
-    gerar: "Generate Link",
-    copiar: "Copy",
-    abrir: "Open in WhatsApp",
-    limpar: "Clear",
-    placeholderMensagem: "Type your message...",
-    placeholderNumero: "Ex: 5511999999999",
-    resultado: "Your link:",
-    titulo: "WhatsApp Link Generator",
-    templates: {
-      "Boas-vindas": "👋 Hello! Thanks for reaching out. How can I help you today?",
-      "Promoção": "🔥 SPECIAL OFFER!\nTake advantage of our promotion!\nUse the code PROMO10 and get 10% OFF"
-    }
-  },
-  es: {
-    gerar: "Generar Enlace",
-    copiar: "Copiar",
-    abrir: "Abrir en WhatsApp",
-    limpar: "Limpiar",
-    placeholderMensagem: "Escribe tu mensaje...",
-    placeholderNumero: "Ej: 5491199999999",
-    resultado: "Tu enlace:",
-    titulo: "Generador de Enlace para WhatsApp",
-    templates: {
-      "Boas-vindas": "👋 ¡Hola! Gracias por contactarnos. ¿Cómo puedo ayudarte hoy?",
-      "Promoção": "🔥 ¡OFERTA ESPECIAL!\nAprovecha nuestra promoción.\nUsa el código PROMO10 y obtén 10% OFF"
-    }
-  }
-};
-
-function trocarIdioma() {
-  const idioma = document.getElementById('language').value;
-  document.getElementById('botao').innerText = traducoes[idioma].gerar;
-  document.getElementById('copiar').innerText = traducoes[idioma].copiar;
-  document.getElementById('abrir').innerText = traducoes[idioma].abrir;
-  document.getElementById('limpar').innerText = traducoes[idioma].limpar;
-  document.getElementById('resultado-label').innerText = traducoes[idioma].resultado;
-  document.getElementById('titulo').innerText = traducoes[idioma].titulo;
-  document.getElementById('mensagem').placeholder = traducoes[idioma].placeholderMensagem;
-  document.getElementById('numero').placeholder = traducoes[idioma].placeholderNumero;
-
-  document.querySelectorAll('.template').forEach(el => {
-    const nome = el.getAttribute('data-key');
-    el.innerText = nome;
-    el.onclick = () => preencherTemplate(traducoes[idioma].templates[nome]);
-  });
-}
+});
