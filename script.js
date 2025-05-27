@@ -1,6 +1,14 @@
-function gerarLink() {
+
+async function encurtarLink(url) {
+  const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
+  const linkEncurtado = await response.text();
+  return linkEncurtado;
+}
+
+async function gerarLink() {
   const numero = document.getElementById('numero').value.trim();
   const mensagem = document.getElementById('mensagem').value.trim();
+  const encurtar = document.getElementById('encurtar').checked;
 
   if (numero === '') {
     alert('Por favor, informe o número com DDD.');
@@ -10,8 +18,10 @@ function gerarLink() {
   const mensagemFormatada = encodeURIComponent(mensagem);
   const link = `https://wa.me/55${numero}${mensagem ? `?text=${mensagemFormatada}` : ''}`;
 
-  document.getElementById('linkGerado').value = link;
-  document.getElementById('abrirLink').href = link;
+  const linkFinal = encurtar ? await encurtarLink(link) : link;
+
+  document.getElementById('linkGerado').value = linkFinal;
+  document.getElementById('abrirLink').href = linkFinal;
   document.getElementById('resultado').style.display = 'block';
 
   document.getElementById('previewMensagem').innerText = mensagem || 'Sua mensagem aparecerá aqui';
