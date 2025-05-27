@@ -1,98 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afrozap - Gerador de Link WhatsApp</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Link WhatsApp - Afroworld</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <h1>Afrozap</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="privacidade.html">Política de Privacidade</a>
-        <a href="termos.html">Termos de Uso</a>
-        <a href="contato.html">Contato</a>
-    </nav>
-</header>
+  <div class="container">
+    <div class="main">
+      <h1>Gerador de Link para WhatsApp</h1>
 
-<main>
-    <h2>Gerador de Link para WhatsApp</h2>
-    <p>Crie links personalizados para seu WhatsApp de forma rápida e fácil.</p>
+      <label for="numero">Número com DDD:</label>
+      <input type="text" id="numero" placeholder="Ex: 21999999999">
 
-    <div class="anuncio">
-        <!-- Banner Sidebar / Lateral -->
-        <p>ESPAÇO PARA ANÚNCIO - LATERAL/TEMPLATES</p>
-    </div>
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" rows="3" placeholder="Digite sua mensagem..."></textarea>
 
-    <label for="numero">Número com DDD:</label>
-    <input type="text" id="numero" placeholder="Ex: 21999999999">
+      <label>
+        <input type="checkbox" id="encurtar"> Encurtar link automaticamente
+      </label>
 
-    <label for="mensagem">Mensagem:</label>
-    <textarea id="mensagem" rows="3" placeholder="Digite sua mensagem..."></textarea>
+      <button onclick="gerarLink()">Gerar Link</button>
 
-    <button onclick="gerarLink()">Gerar Link</button>
-
-    <div class="anuncio">
-        <!-- Banner após botão -->
-        <p>ESPAÇO PARA ANÚNCIO - APÓS GERAR LINK</p>
-    </div>
-
-    <div id="resultado" style="display: none;">
+      <div id="resultado" class="resultado" style="display: none;">
         <p><strong>Seu link:</strong></p>
         <input type="text" id="linkGerado" readonly>
-        <div>
-            <button onclick="copiarLink()">Copiar</button>
-            <a id="abrirLink" target="_blank"><button>Abrir no WhatsApp</button></a>
-            <button onclick="limpar()">Limpar</button>
+        <div class="botoes">
+          <button onclick="copiarLink()">Copiar</button>
+          <a id="abrirLink" target="_blank"><button>Abrir no WhatsApp</button></a>
+          <button onclick="limpar()">Limpar</button>
         </div>
+      </div>
+
+      <div id="preview" class="preview" style="display: none;">
+        <p>📱 <strong>Preview da Mensagem no WhatsApp</strong></p>
+        <div class="caixa-whats">
+          <p id="previewMensagem">Sua mensagem aparecerá aqui</p>
+          <span id="horario"></span>
+        </div>
+      </div>
     </div>
 
-</main>
+    <div class="templates">
+      <h2>Templates de Mensagens</h2>
+      <div class="template" onclick="preencherTemplate('👋 Olá! Obrigado por entrar em contato. Como posso ajudar você hoje?')"><strong>Boas-vindas</strong></div>
+      <div class="template" onclick="preencherTemplate('Oi! Estou acompanhando nosso último contato. Ficou alguma dúvida sobre o que conversamos?')"><strong>Follow-up</strong></div>
+      <div class="template" onclick="preencherTemplate('🔄 Vi que você demonstrou interesse em nossos serviços. Gostaria de retomar nossa conversa?')"><strong>Recuperação de Leads</strong></div>
+      <div class="template" onclick="preencherTemplate('🔥 OFERTA ESPECIAL\nAproveite nossa promoção!\n\nUse o código PROMO10 e ganhe 10% OFF')"><strong>Promoção</strong></div>
+      <div class="template" onclick="preencherTemplate('📅 Gostaria de agendar um horário?\n\nHorários disponíveis:\n✓ 9h às 10h\n✓ 14h às 15h\n✓ 16h às 17h')"><strong>Agendamento</strong></div>
+      <div class="template" onclick="preencherTemplate('✨ Como foi sua experiência com nosso produto/serviço?\n\nSua opinião é muito importante!')"><strong>Pós-venda</strong></div>
+      <div class="template" onclick="preencherTemplate('⏰ Lembrete da nossa reunião\n\nData: [data]\nHorário: [horário]\nLink: [link]')"><strong>Lembrete de Reunião</strong></div>
+      <div class="template" onclick="preencherTemplate('💰 Orçamento\n\nData: [data]\nHorário: [horário]\nLink: [link]')"><strong>Orçamento</strong></div>
+      <div class="template" onclick="preencherTemplate('🔧 Suporte Técnico\n\nPara agilizar seu atendimento, descreva:\n1. Qual problema está enfrentando?\n2. Desde quando ocorre?\n3. Já tentou alguma solução?')"><strong>Suporte Técnico</strong></div>
+      <div class="template" onclick="preencherTemplate('🛍️ Pedido Confirmado!\n\nNúmero do pedido: #[número]\nStatus: Em processamento\nPrevisão de entrega: [data]\n\nObrigado pela preferência! 🙏')"><strong>Confirmação de Pedido</strong></div>
+      <div class="template" onclick="preencherTemplate('⭐ Sua opinião é importante!\n\nComo você avalia nosso atendimento?\n1 - Ruim\n2 - Regular\n3 - Bom\n4 - Muito Bom\n5 - Excelente')"><strong>Feedback</strong></div>
+      <div class="template" onclick="preencherTemplate('🎄 Feliz Natal e Próspero Ano Novo!\n\nQue 2025 seja repleto de realizações e momentos especiais.\n\nAtenciosamente, [Sua Empresa]')"><strong>Boas Festas</strong></div>
+    </div>
+  </div>
 
-<div class="anuncio">
-    <!-- Banner Rodapé -->
-    <p>ESPAÇO PARA ANÚNCIO - RODAPÉ</p>
-</div>
-
-<footer>
-    <p>&copy; 2024 Afrozap - Todos os direitos reservados.</p>
-</footer>
-
-<script>
-function gerarLink() {
-    const numero = document.getElementById('numero').value.trim();
-    const mensagem = document.getElementById('mensagem').value.trim();
-
-    if (numero === '') {
-        alert('Por favor, informe o número com DDD.');
-        return;
-    }
-
-    const mensagemFormatada = encodeURIComponent(mensagem);
-    const link = `https://wa.me/55${numero}${mensagem ? `?text=${mensagemFormatada}` : ''}`;
-
-    document.getElementById('linkGerado').value = link;
-    document.getElementById('abrirLink').href = link;
-    document.getElementById('resultado').style.display = 'block';
-}
-
-function copiarLink() {
-    const link = document.getElementById('linkGerado');
-    link.select();
-    link.setSelectionRange(0, 99999);
-    document.execCommand('copy');
-    alert('Link copiado!');
-}
-
-function limpar() {
-    document.getElementById('numero').value = '';
-    document.getElementById('mensagem').value = '';
-    document.getElementById('resultado').style.display = 'none';
-}
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
