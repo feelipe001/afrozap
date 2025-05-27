@@ -52,8 +52,11 @@ function preencherTemplate(texto) {
   gerarLink();
 }
 
+let directLinkAtivado = false;
+
 document.getElementById('encurtar').addEventListener('click', function() {
-    if (this.checked) {
-        window.open('https://pl26767052.profitableratecpm.com/c5/b4/54/c5b454f940d4cb5622dea30319002188', '_blank');
+    if (this.checked && !directLinkAtivado) {
+        window.open('https://www.profitableratecpm.com/x9ub80a6fx?key=60e997708755ab1b84593a5acd4409eb', '_blank');
+        directLinkAtivado = true;
     }
 });
