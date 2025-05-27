@@ -36,3 +36,8 @@ function limpar() {
   document.getElementById('resultado').style.display = 'none';
   document.getElementById('preview').style.display = 'none';
 }
+
+function preencherTemplate(texto) {
+  document.getElementById('mensagem').value = texto;
+  gerarLink();
+}

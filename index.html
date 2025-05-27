@@ -8,32 +8,50 @@
 </head>
 <body>
   <div class="container">
-    <h1>Gerador de Link para WhatsApp</h1>
+    <div class="main">
+      <h1>Gerador de Link para WhatsApp</h1>
 
-    <label for="numero">Número com DDD:</label>
-    <input type="text" id="numero" placeholder="Ex: 21999999999">
+      <label for="numero">Número com DDD:</label>
+      <input type="text" id="numero" placeholder="Ex: 21999999999">
 
-    <label for="mensagem">Mensagem:</label>
-    <textarea id="mensagem" rows="3" placeholder="Digite sua mensagem..."></textarea>
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" rows="3" placeholder="Digite sua mensagem..."></textarea>
 
-    <button onclick="gerarLink()">Gerar Link</button>
+      <button onclick="gerarLink()">Gerar Link</button>
 
-    <div id="resultado" class="resultado" style="display: none;">
-      <p><strong>Seu link:</strong></p>
-      <input type="text" id="linkGerado" readonly>
-      <div class="botoes">
-        <button onclick="copiarLink()">Copiar</button>
-        <a id="abrirLink" target="_blank"><button>Abrir no WhatsApp</button></a>
-        <button onclick="limpar()">Limpar</button>
+      <div id="resultado" class="resultado" style="display: none;">
+        <p><strong>Seu link:</strong></p>
+        <input type="text" id="linkGerado" readonly>
+        <div class="botoes">
+          <button onclick="copiarLink()">Copiar</button>
+          <a id="abrirLink" target="_blank"><button>Abrir no WhatsApp</button></a>
+          <button onclick="limpar()">Limpar</button>
+        </div>
+      </div>
+
+      <div id="preview" class="preview" style="display: none;">
+        <p>📱 <strong>Preview da Mensagem no WhatsApp</strong></p>
+        <div class="caixa-whats">
+          <p id="previewMensagem">Sua mensagem aparecerá aqui</p>
+          <span id="horario"></span>
+        </div>
       </div>
     </div>
 
-    <div id="preview" class="preview" style="display: none;">
-      <p>📱 <strong>Preview da Mensagem no WhatsApp</strong></p>
-      <div class="caixa-whats">
-        <p id="previewMensagem">Sua mensagem aparecerá aqui</p>
-        <span id="horario"></span>
-      </div>
+    <div class="templates">
+      <h2>Templates de Mensagens</h2>
+      <div class="template" onclick="preencherTemplate('👋 Olá! Obrigado por entrar em contato. Como posso ajudar você hoje?')"><strong>Boas-vindas</strong></div>
+      <div class="template" onclick="preencherTemplate('Oi! Estou acompanhando nosso último contato. Ficou alguma dúvida sobre o que conversamos?')"><strong>Follow-up</strong></div>
+      <div class="template" onclick="preencherTemplate('🔄 Vi que você demonstrou interesse em nossos serviços. Gostaria de retomar nossa conversa?')"><strong>Recuperação de Leads</strong></div>
+      <div class="template" onclick="preencherTemplate('🔥 OFERTA ESPECIAL\nAproveite nossa promoção!\n\nUse o código PROMO10 e ganhe 10% OFF')"><strong>Promoção</strong></div>
+      <div class="template" onclick="preencherTemplate('📅 Gostaria de agendar um horário?\n\nHorários disponíveis:\n✓ 9h às 10h\n✓ 14h às 15h\n✓ 16h às 17h')"><strong>Agendamento</strong></div>
+      <div class="template" onclick="preencherTemplate('✨ Como foi sua experiência com nosso produto/serviço?\n\nSua opinião é muito importante!')"><strong>Pós-venda</strong></div>
+      <div class="template" onclick="preencherTemplate('⏰ Lembrete da nossa reunião\n\nData: [data]\nHorário: [horário]\nLink: [link]')"><strong>Lembrete de Reunião</strong></div>
+      <div class="template" onclick="preencherTemplate('💰 Orçamento\n\nData: [data]\nHorário: [horário]\nLink: [link]')"><strong>Orçamento</strong></div>
+      <div class="template" onclick="preencherTemplate('🔧 Suporte Técnico\n\nPara agilizar seu atendimento, descreva:\n1. Qual problema está enfrentando?\n2. Desde quando ocorre?\n3. Já tentou alguma solução?')"><strong>Suporte Técnico</strong></div>
+      <div class="template" onclick="preencherTemplate('🛍️ Pedido Confirmado!\n\nNúmero do pedido: #[número]\nStatus: Em processamento\nPrevisão de entrega: [data]\n\nObrigado pela preferência! 🙏')"><strong>Confirmação de Pedido</strong></div>
+      <div class="template" onclick="preencherTemplate('⭐ Sua opinião é importante!\n\nComo você avalia nosso atendimento?\n1 - Ruim\n2 - Regular\n3 - Bom\n4 - Muito Bom\n5 - Excelente')"><strong>Feedback</strong></div>
+      <div class="template" onclick="preencherTemplate('🎄 Feliz Natal e Próspero Ano Novo!\n\nQue 2025 seja repleto de realizações e momentos especiais.\n\nAtenciosamente, [Sua Empresa]')"><strong>Boas Festas</strong></div>
     </div>
   </div>
 
