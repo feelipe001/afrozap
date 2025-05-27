@@ -18,27 +18,81 @@
     </nav>
 </header>
 
-<div class="anuncio">
-    <!-- Banner Topo -->
-    <p>ESPAÇO PARA ANÚNCIO - TOPO (728x90 ou responsivo)</p>
-</div>
-
 <main>
-    <h2>Gerador de Link para WhatsApp</h2><p>Crie links personalizados para seu WhatsApp de forma rápida e fácil.</p><a href='https://wa.me/' class='botao'>Fale Conosco no WhatsApp</a>
+    <h2>Gerador de Link para WhatsApp</h2>
+    <p>Crie links personalizados para seu WhatsApp de forma rápida e fácil.</p>
 
     <div class="anuncio">
-        <!-- Banner Meio -->
-        <p>ESPAÇO PARA ANÚNCIO - MEIO DO CONTEÚDO (300x250 ou responsivo)</p>
+        <!-- Banner Sidebar / Lateral -->
+        <p>ESPAÇO PARA ANÚNCIO - LATERAL/TEMPLATES</p>
     </div>
+
+    <label for="numero">Número com DDD:</label>
+    <input type="text" id="numero" placeholder="Ex: 21999999999">
+
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" rows="3" placeholder="Digite sua mensagem..."></textarea>
+
+    <button onclick="gerarLink()">Gerar Link</button>
+
+    <div class="anuncio">
+        <!-- Banner após botão -->
+        <p>ESPAÇO PARA ANÚNCIO - APÓS GERAR LINK</p>
+    </div>
+
+    <div id="resultado" style="display: none;">
+        <p><strong>Seu link:</strong></p>
+        <input type="text" id="linkGerado" readonly>
+        <div>
+            <button onclick="copiarLink()">Copiar</button>
+            <a id="abrirLink" target="_blank"><button>Abrir no WhatsApp</button></a>
+            <button onclick="limpar()">Limpar</button>
+        </div>
+    </div>
+
 </main>
 
 <div class="anuncio">
     <!-- Banner Rodapé -->
-    <p>ESPAÇO PARA ANÚNCIO - RODAPÉ (728x90 ou responsivo)</p>
+    <p>ESPAÇO PARA ANÚNCIO - RODAPÉ</p>
 </div>
 
 <footer>
     <p>&copy; 2024 Afrozap - Todos os direitos reservados.</p>
 </footer>
+
+<script>
+function gerarLink() {
+    const numero = document.getElementById('numero').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+
+    if (numero === '') {
+        alert('Por favor, informe o número com DDD.');
+        return;
+    }
+
+    const mensagemFormatada = encodeURIComponent(mensagem);
+    const link = `https://wa.me/55${numero}${mensagem ? `?text=${mensagemFormatada}` : ''}`;
+
+    document.getElementById('linkGerado').value = link;
+    document.getElementById('abrirLink').href = link;
+    document.getElementById('resultado').style.display = 'block';
+}
+
+function copiarLink() {
+    const link = document.getElementById('linkGerado');
+    link.select();
+    link.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    alert('Link copiado!');
+}
+
+function limpar() {
+    document.getElementById('numero').value = '';
+    document.getElementById('mensagem').value = '';
+    document.getElementById('resultado').style.display = 'none';
+}
+</script>
+
 </body>
 </html>
